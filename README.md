@@ -1,6 +1,7 @@
 # Anaconda MCP Demo using Claude Desktop
 
-**Status:** Active | Last tested: 2026-04-06
+[![Status](https://img.shields.io/github/actions/workflow/status/anaconda-labs/anaconda-mcp-demo/status.yml?branch=main&label=status)](https://github.com/anaconda-labs/anaconda-mcp-demo/actions/workflows/status.yml)
+[![Last Commit](https://img.shields.io/github/last-commit/anaconda-labs/anaconda-mcp-demo)](https://github.com/anaconda-labs/anaconda-mcp-demo/commits/main)
 
 Welcome to the Anaconda MCP demo! This interactive demonstration shows how Claude Desktop can manage conda environments through natural language using the Model Context Protocol (MCP).
 

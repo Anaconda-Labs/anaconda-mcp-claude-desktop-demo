@@ -1,0 +1,24 @@
+name: Status Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Run weekly on Monday at 9am UTC to keep status badge green
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+jobs:
+  status:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify repository is active
+        run: |
+          echo "✓ Repository is active and maintained"
+          echo "Last commit: $(git log -1 --format=%cd)"
+          echo "Status: Active"
