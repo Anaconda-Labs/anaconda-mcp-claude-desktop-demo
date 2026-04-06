@@ -8,16 +8,27 @@ Welcome to the Anaconda MCP demo! This interactive demonstration shows how Claud
 
 ## File Guide
 
-| File/Directory | What It Is |
-|----------------|------------|
-| **QUICK_START.md** | Fastest path to working demo (5 minutes) |
-| **README.md** | This file - complete documentation and troubleshooting |
-| **demo_walkthrough.md** | Step-by-step walkthrough of 3 demo scenarios |
-| **setup.sh** | Automated setup script |
-| **messy_scripts/** | Realistic "found code" for import resolution demo |
-| **sample_project/** | Structured ML project with customer data and notebook |
-| **demo-environment.yml** | Environment spec for running the demo infrastructure |
-| **LICENSE** | MIT License for this demo |
+```
+anaconda-mcp-demo/
+├── QUICK_START.md              # Start here - 5 minute setup guide
+├── README.md                   # Complete documentation (this file)
+├── demo_walkthrough.md         # Step-by-step: 3 demo scenarios
+├── setup.sh                    # Automated setup script
+├── demo-environment.yml        # Demo infrastructure environment spec
+├── LICENSE                     # MIT License
+│
+├── messy_scripts/              # "Found code" for import resolution demo
+│   ├── image_analyzer.py       #   Image processing script
+│   ├── data_pipeline.py        #   ML pipeline script
+│   ├── environment.yml         #   Environment created by Claude
+│   └── README.md               #   Script descriptions
+│
+└── sample_project/             # Structured ML project example
+    ├── data/                   #   Customer transaction data (CSV)
+    ├── notebooks/              #   Jupyter analysis notebook
+    ├── environment.yml         #   Project environment spec
+    └── README.md               #   Project documentation
+```
 
 ---
 
