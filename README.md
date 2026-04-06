@@ -4,6 +4,23 @@
 
 Welcome to the Anaconda MCP demo! This interactive demonstration shows how Claude Desktop can manage conda environments through natural language using the Model Context Protocol (MCP).
 
+---
+
+## File Guide
+
+| File/Directory | What It Is |
+|----------------|------------|
+| **QUICK_START.md** | Fastest path to working demo (5 minutes) |
+| **README.md** | This file - complete documentation and troubleshooting |
+| **demo_walkthrough.md** | Step-by-step walkthrough of 3 demo scenarios |
+| **setup.sh** | Automated setup script |
+| **messy_scripts/** | Realistic "found code" for import resolution demo |
+| **sample_project/** | Structured ML project with customer data and notebook |
+| **demo-environment.yml** | Environment spec for running the demo infrastructure |
+| **LICENSE** | MIT License for this demo |
+
+---
+
 ## What This Demo Shows
 
 How AI assistants can help data scientists and developers:

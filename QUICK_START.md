@@ -23,7 +23,7 @@ cd ~/Documents/anaconda-mcp-demo  # Or wherever you cloned this
 - ✅ Checks prerequisites
 - ✅ Creates `anaconda-mcp-demo` environment
 - ✅ Installs `anaconda-mcp` + `environments-mcp-server`
-- ✅ Configures Claude Desktop
+- ✅ Configures Claude Desktop (anaconda-mcp + filesystem access)
 - ✅ Verifies everything works
 
 **Time:** ~5 minutes
@@ -46,8 +46,13 @@ cd ~/Documents/anaconda-mcp-demo  # Or wherever you cloned this
 2. Go to **Settings → Developer → Local MCP Servers**
 3. Verify `anaconda-mcp` shows as **running**
 
+### Check Connectors
+Start a new chat and click the **"+"** icon:
+1. Select **Connectors**
+2. Verify `anaconda-mcp` and `filesystem` are both toggled **ON**
+
 ### Test the Tools
-Start a new chat and send:
+In your chat, send:
 ```
 List all my conda environments
 ```
@@ -58,10 +63,7 @@ Claude should automatically call the tools and show your environments.
 
 ## Next Steps
 
-Once verified:
-
-1. **Follow the demo**: Open `demo_walkthrough.md` for 4 complete scenarios
-2. **Try the sample project**: Explore `sample_project/` for ML analysis example
+Once verified: **Follow the demo**: Open `demo_walkthrough.md` for 3 progressive scenarios
 
 ---
 
@@ -70,26 +72,14 @@ Once verified:
 **Tools don't appear?**
 → See [README.md - Troubleshooting section](README.md#troubleshooting)
 
-**Port conflicts?**
-→ See [README.md - Port collision errors](README.md#port-already-in-use-port-collision)
+**Filesystem not working?**
+→ Verify filesystem connector is enabled (see "Check Connectors" above)
 
-**Setup script fails?**
-→ See [README.md - Setup script fails](README.md#setup-script-fails)
+**Port conflicts?**
+→ See [README.md - Port collision errors](README.md#port-collision-errors)
 
 **Other issues?**
 → Check the full [README.md](README.md) for comprehensive troubleshooting
-
----
-
-## File Guide
-
-| File | What It Is |
-|------|------------|
-| **QUICK_START.md** | This file - fastest path to working demo |
-| **README.md** | Complete documentation, all scenarios, troubleshooting |
-| **demo_walkthrough.md** | Step-by-step through 4 demo scenarios |
-| **setup.sh** | Automated setup script |
-| **sample_project/** | ML project example with Jupyter notebook |
 
 ---
 
@@ -98,12 +88,6 @@ Once verified:
 Three steps:
 1. Run `./setup.sh`
 2. Restart Claude Desktop
-3. Test with "List all my conda environments"
+3. Verify connectors are enabled
 
-**Then open `demo_walkthrough.md` and start the demo!**
-
----
-
-**Having issues?** Check [README.md](README.md) for comprehensive troubleshooting.
-
-**Questions?** Open an issue: https://github.com/anaconda/anaconda-mcp/issues
+**Then open `demo_walkthrough.md` and start with "The Messy Script" scenario!**
