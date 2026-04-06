@@ -1,0 +1,95 @@
+customer_id,purchase_date,product_category,purchase_amount,customer_age,customer_location
+C001,2024-01-15,Electronics,299.99,34,Seattle
+C002,2024-01-16,Clothing,79.99,28,Portland
+C003,2024-01-16,Home & Garden,159.50,45,San Francisco
+C001,2024-01-18,Books,24.99,34,Seattle
+C004,2024-01-19,Electronics,599.99,52,Los Angeles
+C005,2024-01-20,Clothing,129.99,31,Seattle
+C002,2024-01-22,Shoes,89.99,28,Portland
+C006,2024-01-23,Electronics,449.99,41,San Diego
+C003,2024-01-24,Home & Garden,89.99,45,San Francisco
+C007,2024-01-25,Books,34.99,29,Denver
+C008,2024-01-26,Clothing,199.99,37,Austin
+C004,2024-01-28,Electronics,149.99,52,Los Angeles
+C009,2024-01-29,Home & Garden,249.99,48,Boston
+C010,2024-01-30,Books,19.99,25,Chicago
+C001,2024-02-01,Electronics,799.99,34,Seattle
+C011,2024-02-02,Clothing,149.99,33,Miami
+C005,2024-02-03,Shoes,119.99,31,Seattle
+C012,2024-02-04,Electronics,399.99,44,Phoenix
+C013,2024-02-05,Home & Garden,179.99,50,Atlanta
+C002,2024-02-06,Books,29.99,28,Portland
+C014,2024-02-07,Clothing,89.99,26,Nashville
+C006,2024-02-08,Electronics,549.99,41,San Diego
+C015,2024-02-09,Home & Garden,139.99,39,Philadelphia
+C003,2024-02-10,Books,44.99,45,San Francisco
+C016,2024-02-11,Shoes,159.99,35,Houston
+C004,2024-02-12,Electronics,699.99,52,Los Angeles
+C017,2024-02-13,Clothing,109.99,30,Columbus
+C007,2024-02-14,Home & Garden,199.99,29,Denver
+C018,2024-02-15,Books,39.99,27,Charlotte
+C008,2024-02-16,Electronics,349.99,37,Austin
+C019,2024-02-17,Clothing,169.99,42,Indianapolis
+C009,2024-02-18,Shoes,99.99,48,Boston
+C020,2024-02-19,Home & Garden,229.99,46,San Antonio
+C010,2024-02-20,Books,24.99,25,Chicago
+C001,2024-02-21,Electronics,899.99,34,Seattle
+C021,2024-02-22,Clothing,139.99,32,Jacksonville
+C011,2024-02-23,Home & Garden,189.99,33,Miami
+C022,2024-02-24,Books,49.99,38,Fort Worth
+C005,2024-02-25,Electronics,299.99,31,Seattle
+C023,2024-02-26,Shoes,129.99,28,San Jose
+C012,2024-02-27,Clothing,119.99,44,Phoenix
+C024,2024-02-28,Home & Garden,159.99,51,Detroit
+C013,2024-03-01,Books,34.99,50,Atlanta
+C025,2024-03-02,Electronics,449.99,36,Memphis
+C014,2024-03-03,Clothing,99.99,26,Nashville
+C026,2024-03-04,Shoes,149.99,40,Louisville
+C006,2024-03-05,Home & Garden,219.99,41,San Diego
+C027,2024-03-06,Books,29.99,24,Baltimore
+C015,2024-03-07,Electronics,599.99,39,Philadelphia
+C028,2024-03-08,Clothing,179.99,43,Milwaukee
+C016,2024-03-09,Home & Garden,169.99,35,Houston
+C029,2024-03-10,Books,44.99,31,Albuquerque
+C017,2024-03-11,Shoes,109.99,30,Columbus
+C030,2024-03-12,Electronics,749.99,47,Tucson
+C003,2024-03-13,Clothing,159.99,45,San Francisco
+C031,2024-03-14,Home & Garden,199.99,49,Fresno
+C018,2024-03-15,Books,39.99,27,Charlotte
+C032,2024-03-16,Electronics,399.99,41,Mesa
+C019,2024-03-17,Shoes,139.99,42,Indianapolis
+C033,2024-03-18,Clothing,189.99,35,Sacramento
+C007,2024-03-19,Home & Garden,249.99,29,Denver
+C034,2024-03-20,Books,54.99,26,Atlanta
+C020,2024-03-21,Electronics,499.99,46,San Antonio
+C035,2024-03-22,Clothing,129.99,38,Kansas City
+C008,2024-03-23,Shoes,119.99,37,Austin
+C036,2024-03-24,Home & Garden,209.99,45,Long Beach
+C021,2024-03-25,Books,24.99,32,Jacksonville
+C037,2024-03-26,Electronics,649.99,50,Colorado Springs
+C010,2024-03-27,Clothing,109.99,25,Chicago
+C038,2024-03-28,Home & Garden,179.99,44,Raleigh
+C022,2024-03-29,Books,34.99,38,Fort Worth
+C039,2024-03-30,Shoes,159.99,33,Omaha
+C011,2024-03-31,Electronics,349.99,33,Miami
+C040,2024-04-01,Clothing,149.99,29,Miami Beach
+C023,2024-04-02,Home & Garden,189.99,28,San Jose
+C041,2024-04-03,Books,44.99,37,Oakland
+C012,2024-04-04,Electronics,549.99,44,Phoenix
+C042,2024-04-05,Shoes,129.99,31,Minneapolis
+C024,2024-04-06,Clothing,139.99,51,Detroit
+C043,2024-04-07,Home & Garden,219.99,48,Tulsa
+C013,2024-04-08,Books,29.99,50,Atlanta
+C044,2024-04-09,Electronics,799.99,42,Arlington
+C025,2024-04-10,Clothing,169.99,36,Memphis
+C045,2024-04-11,Shoes,149.99,34,New Orleans
+C014,2024-04-12,Home & Garden,199.99,26,Nashville
+C046,2024-04-13,Books,39.99,40,Wichita
+C026,2024-04-14,Electronics,399.99,40,Louisville
+C047,2024-04-15,Clothing,159.99,27,Cleveland
+C015,2024-04-16,Home & Garden,229.99,39,Philadelphia
+C048,2024-04-17,Books,49.99,46,Tampa
+C027,2024-04-18,Shoes,139.99,24,Baltimore
+C049,2024-04-19,Electronics,699.99,52,Bakersfield
+C016,2024-04-20,Clothing,119.99,35,Houston
+C050,2024-04-21,Home & Garden,189.99,41,Aurora

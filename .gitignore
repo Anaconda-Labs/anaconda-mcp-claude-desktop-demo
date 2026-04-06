@@ -1,0 +1,21 @@
+# env files
+.env
+.env.local
+.env.*.local
+
+# Claude configuration
+.claude
+
+# Evaluation reports
+*REPORT.md
+
+# Exclude Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Exclude Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Exclude any generated environment files
+*.log

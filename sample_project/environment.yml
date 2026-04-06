@@ -1,0 +1,20 @@
+# Conda environment specification for ML Customer Analysis
+# Create with: conda env create -f environment.yml
+# Update with: conda env update -f environment.yml --prune
+
+name: ml-customer-analysis
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.13
+  - pandas>=2.0.0
+  - numpy>=1.24.0
+  - scikit-learn>=1.3.0
+  - matplotlib>=3.7.0
+  - seaborn>=0.12.0
+  - jupyter>=1.0.0
+  - ipykernel>=6.25.0
+  - python-dateutil>=2.8.0

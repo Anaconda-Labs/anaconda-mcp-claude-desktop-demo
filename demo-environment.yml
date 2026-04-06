@@ -1,0 +1,28 @@
+# Anaconda MCP Demo Environment Specification
+# This file defines the exact environment used for this demo
+# Create with: conda env create -f demo-environment.yml
+# Update with: conda env update -f demo-environment.yml --prune
+
+name: anaconda-mcp-demo
+
+channels:
+  - anaconda
+  - defaults
+  - conda-forge
+
+dependencies:
+  - python=3.13
+  - anaconda-mcp=1.0.1
+  - environments-mcp-server=1.0.0
+  - mcp-compose=0.1.12
+  - mcp>=1.26.0
+
+# Last tested: 2026-04-06
+# Tested on: macOS, Python 3.13
+#
+# Note: This environment specification uses pinned versions to ensure
+# reproducibility. The demo is designed to work with these specific versions.
+#
+# If you encounter version conflicts, you can:
+# 1. Use the automated setup script: ./setup.sh (recommended)
+# 2. Manually install compatible versions
