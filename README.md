@@ -128,11 +128,9 @@ After completing the walkthrough, try your own environment management tasks!
 
 This demo includes three progressive scenarios:
 
-1. **The Messy Script** ⭐ - Get unfamiliar code running without import resolution headaches
+1. **The Messy Script** - Get unfamiliar code running without import resolution headaches
 2. **The Package Explorer** - List and inspect environments and packages
 3. **The Cleanup Crew** - Safely remove environments
-
-**The Messy Script scenario** demonstrates the most compelling use case: You have Python code with mysterious imports and no environment spec. Instead of spending 20 minutes on Stack Overflow figuring out `cv2`→`opencv` and `sklearn`→`scikit-learn`, Claude does it automatically.
 
 📖 **For complete step-by-step instructions, see [demo_walkthrough.md](demo_walkthrough.md)**
 
