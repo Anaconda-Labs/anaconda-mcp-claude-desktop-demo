@@ -13,22 +13,26 @@ This repository uses automated GitHub Actions badges to show repository status a
 
 `.github/workflows/status.yml` runs on:
 - Every push to main
-- Every pull request
-- Weekly schedule (Monday 9am UTC) to keep badge green
+- Daily schedule (9am UTC) to check commit age
 - Manual trigger via workflow_dispatch
 
-The workflow does a simple check to verify the repository is active.
+**The workflow:**
+1. Calculates days since the last commit
+2. Sets status to "Active" (green) if < 90 days old
+3. Sets status to "Needs Review" (orange) if ≥ 90 days old
+4. Saves the badge data to `.github/badges/status.json`
+5. Commits the updated JSON file
 
 ### The Badges
 
 In the README:
 
 ```markdown
-[![Status](https://img.shields.io/github/actions/workflow/status/anaconda-labs/REPO-NAME/status.yml?branch=main&label=status)](https://github.com/anaconda-labs/REPO-NAME/actions/workflows/status.yml)
-[![Last Commit](https://img.shields.io/github/last-commit/anaconda-labs/REPO-NAME)](https://github.com/anaconda-labs/REPO-NAME/commits/main)
+[![Status](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Anaconda-Labs/REPO-NAME/main/.github/badges/status.json)](https://github.com/Anaconda-Labs/REPO-NAME/commits/main)
+[![Last Commit](https://img.shields.io/github/last-commit/Anaconda-Labs/REPO-NAME)](https://github.com/Anaconda-Labs/REPO-NAME/commits/main)
 ```
 
-Replace `REPO-NAME` with your repository name.
+Replace `REPO-NAME` with your repository name (e.g., `anaconda-mcp-claude-desktop-demo`).
 
 ## Adding to Other Repositories
 
@@ -55,19 +59,49 @@ Add these lines near the top of your README (replace `REPO-NAME`):
 
 ## Customization
 
+### Change the Age Threshold
+
+Edit the days check in `status.yml` (currently 90 days):
+
+```yaml
+if [ $DAYS_OLD -gt 90 ]; then
+```
+
+Change `90` to your desired threshold (e.g., 60, 120, 180).
+
 ### Change Schedule
 
 Edit the cron expression in `status.yml`:
 
 ```yaml
 schedule:
-  - cron: '0 9 * * 1'  # Weekly Monday 9am UTC
+  - cron: '0 9 * * *'  # Daily 9am UTC
 ```
 
 Examples:
-- Daily: `'0 9 * * *'`
+- Weekly: `'0 9 * * 1'`
 - Bi-weekly: `'0 9 1,15 * *'`
 - Monthly: `'0 9 1 * *'`
+
+### Add Additional Status Levels
+
+You can add intermediate states. For example, add a "Warning" state for 60-90 days:
+
+```bash
+if [ $DAYS_OLD -gt 90 ]; then
+  echo "status=needs-review" >> $GITHUB_OUTPUT
+  echo "color=orange" >> $GITHUB_OUTPUT
+  echo "message=Needs Review" >> $GITHUB_OUTPUT
+elif [ $DAYS_OLD -gt 60 ]; then
+  echo "status=warning" >> $GITHUB_OUTPUT
+  echo "color=yellow" >> $GITHUB_OUTPUT
+  echo "message=Stale" >> $GITHUB_OUTPUT
+else
+  echo "status=active" >> $GITHUB_OUTPUT
+  echo "color=brightgreen" >> $GITHUB_OUTPUT
+  echo "message=Active" >> $GITHUB_OUTPUT
+fi
+```
 
 ### Additional Badges
 
