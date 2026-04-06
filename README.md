@@ -1,4 +1,4 @@
-# Anaconda MCP Demo
+# Anaconda MCP Demo using Claude Desktop
 
 **Status:** Active | Last tested: 2026-04-06
 
