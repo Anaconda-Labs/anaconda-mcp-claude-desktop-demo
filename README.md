@@ -60,14 +60,6 @@ Before running this demo, you'll need:
 - **Jupyter** (for notebook demo scenario)
 - **Terminal** access (to verify AI actions)
 
-### Note on Environment Files
-
-This demo includes:
-- **`demo-environment.yml`** - Creates the environment to *run* this demo (anaconda-mcp, environments-mcp-server)
-- **`sample_project/environment.yml`** - Creates an ML environment for the *sample project* (pandas, scikit-learn, jupyter)
-
-The setup script (`./setup.sh`) handles the demo environment automatically. You only need to manually use the sample project environment if exploring that example.
-
 ---
 
 ## Get Started
@@ -120,7 +112,7 @@ anaconda-mcp claude-desktop setup-config
 
 ### Step 2: Follow the Walkthrough
 
-Open [demo_walkthrough.md](demo_walkthrough.md) and follow the scenarios step-by-step. Each scenario includes:
+Open [demo_walkthrough.md](demo_walkthrough.md) and follow the scenarios step-by-step. The scenarios include:
 - **Natural language prompt** to send to Claude
 - **Expected behavior** from the AI
 - **Verification steps** to confirm in your terminal
@@ -132,9 +124,35 @@ After completing the walkthrough, try your own environment management tasks!
 
 ---
 
+## Demo Scenarios
+
+This demo includes three progressive scenarios:
+
+1. **The Messy Script** ⭐ - Get unfamiliar code running without import resolution headaches
+2. **The Package Explorer** - List and inspect environments and packages
+3. **The Cleanup Crew** - Safely remove environments
+
+**The Messy Script scenario** demonstrates the most compelling use case: You have Python code with mysterious imports and no environment spec. Instead of spending 20 minutes on Stack Overflow figuring out `cv2`→`opencv` and `sklearn`→`scikit-learn`, Claude does it automatically.
+
+📖 **For complete step-by-step instructions, see [demo_walkthrough.md](demo_walkthrough.md)**
+
+---
+
+## Messy Scripts Collection
+
+The `messy_scripts/` directory contains realistic "found code" scenarios—scripts downloaded from GitHub, received from colleagues, or AI-generated. No requirements.txt, no environment.yml, just imports that need to work.
+
+**Scripts included:**
+- `image_analyzer.py` - Image processing with opencv, scikit-learn, pillow
+- `data_pipeline.py` - ML pipeline with xgboost, lightgbm, pandas
+
+See [messy_scripts/README.md](messy_scripts/README.md) for details.
+
+---
+
 ## Sample Project
 
-The `sample_project/` directory contains an ML project with customer transaction data and a Jupyter notebook for analysis. Use this to explore creating environments from `environment.yml` files in the scenario outlined in [demo_walkthrough.md](demo_walkthrough.md).
+The `sample_project/` directory contains a structured ML project with customer transaction data and a Jupyter notebook. Use this for a traditional "create environment from yml" workflow.
 
 ---
 

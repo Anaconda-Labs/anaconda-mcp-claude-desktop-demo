@@ -1,6 +1,6 @@
 # Anaconda MCP Demo Walkthrough
 
-This guide walks you through four scenarios demonstrating Anaconda MCP's capabilities. Each scenario includes the prompt to send to Claude, expected behavior, and verification steps.
+This guide walks you through three scenarios demonstrating Anaconda MCP's capabilities. Each scenario includes the prompt to send to Claude, expected behavior, and verification steps.
 
 **Prerequisites**: Run `./setup.sh` and restart Claude Desktop before beginning.
 
@@ -8,9 +8,9 @@ This guide walks you through four scenarios demonstrating Anaconda MCP's capabil
 
 ## Table of Contents
 
-1. [Scenario 1: The New Data Scientist](#scenario-1-the-new-data-scientist)
+1. [Scenario 1: The Messy Script](#scenario-1-the-messy-script)
 2. [Scenario 2: The Package Explorer](#scenario-2-the-package-explorer)
-3. [Scenario 3: The Cleanup Crew](#scenario-4-the-cleanup-crew)
+3. [Scenario 3: The Cleanup Crew](#scenario-3-the-cleanup-crew)
 4. [Advanced Scenarios](#advanced-scenarios)
 5. [Common Issues](#common-issues)
 6. [Extension Ideas](#extension-ideas)
@@ -21,9 +21,9 @@ This guide walks you through four scenarios demonstrating Anaconda MCP's capabil
 
 ### Verify Installation
 
-In Claude Desktop, make sure "anaconda-mcp" shows up as a Connector and turned onn when you click "+" in a new chat window
+In Claude Desktop, make sure "anaconda-mcp" and "filesystem" show up as Connectors and are turned on when you click "+" in a new chat window.
 
-If you don't see anaconda-mcp, revisit the [Troubleshooting section](README.md#troubleshooting) in the main README.
+If you don't see these connectors, revisit the [Troubleshooting section](README.md#troubleshooting) in the main README.
 
 ### Open Two Windows
 
@@ -33,113 +33,177 @@ For the best demo experience:
 
 ---
 
-## Scenario 1: The New Data Scientist
+## Scenario 1: The Messy Script
 
-**Goal**: Create a complete machine learning environment from scratch using natural language.
+**The Challenge**: You have a Python script with mysterious imports and no environment specification. It could be from a colleague, downloaded from GitHub, or AI-generated. You just want it to run.
 
-### Step 1A: Send the Prompt
+**Goal**: Get the script running in a clean conda environment without manually resolving import → package mappings.
+
+**Why This Matters**: This is the most frustrating 20 minutes of every data scientist's day. Import errors, Stack Overflow searches, conda vs pip confusion, package name mismatches (cv2→opencv, sklearn→scikit-learn). This scenario shows how AI eliminates all of that.
+
+---
+
+### Step 1A: Look at the Script
+
+Open `messy_scripts/image_analyzer.py` in your editor or read it in terminal:
+
+```bash
+cat messy_scripts/image_analyzer.py
+```
+
+**What you'll see:**
+- Imports: `cv2`, `numpy`, `sklearn`, `PIL`, `matplotlib`, `skimage`
+- No requirements.txt
+- No environment.yml
+- No installation instructions
+- Just code that "should work"
+
+**The Traditional Problem:**
+```bash
+$ python image_analyzer.py
+ImportError: No module named 'cv2'
+
+$ conda install cv2
+ERROR: The following packages are not available from current channels...
+```
+
+---
+
+### Step 1B: Ask Claude to Fix It
 
 In Claude Desktop, type:
 
 ```
-I'm starting a machine learning project to analyze customer data. 
-Can you help me set up a conda environment called "ml-customer-analysis" 
-using the information available in /Users/dbouquin/Documents/anaconda-mcp-demo/sample_project/environment.yml (*repace this path with the path to your sample project*)
+I have a Python script at YOUR_PATH/messy_scripts/image_analyzer.py that I need to run. 
+Can you create a conda environment with all the dependencies it needs?
 ```
 
 ### Expected Behavior
 
 Claude should:
-1. Acknowledge your request
-2. Call `conda_create_environment` with appropriate parameters
-3. Confirm the environment was created successfully
-4. Provide the path to the new environment
+1. **Read the script** (using filesystem access)
+2. **Identify imports**: cv2, numpy, sklearn, PIL, matplotlib, skimage
+3. **Intelligently resolve** import names to conda packages:
+   - `cv2` → `opencv` (not opencv-python)
+   - `sklearn` → `scikit-learn` (not sklearn)
+   - `PIL` → `pillow`
+   - `skimage` → `scikit-image`
+   - Others map directly (numpy, matplotlib)
+4. **Create environment** with a meaningful name like `image-analysis`
+5. **Confirm** what was installed
 
 ### Verify in Terminal
 
 ```bash
-# Check that the environment exists
-conda env list | grep ml-customer-analysis
+# Check the environment was created (update grep if needed)
+conda env list | grep image
 
-# You should see output like:
-# ml-customer-analysis     /Users/username/miniconda3/envs/ml-customer-analysis
+# You should see something like:
+# image-analysis    /path/to/conda/envs/image-analysis
 ```
 
-✅ **Success Criteria**: Environment appears in the list with correct Python version
+✅ **Success Criteria**: Environment exists with a meaningful name
 
 ---
 
-### Step 1B: Install Packages
-
-Continue the conversation in Claude Desktop:
-
-```
-Great! Now install xgboost.
-```
-
-### Expected Behavior
-
-Claude should:
-1. Call `conda_install_packages` with the environment name and package list
-2. Wait for installation to complete (may take 1-2 minutes)
-3. Confirm all packages were installed successfully
-4. Provide a summary of what was installed
-
-### Verify in Terminal
-
-```bash
-# Check installed packages
-conda list -n ml-customer-analysis | grep -E "xgboost"
-
-# You should see all five packages listed with version numbers
-```
-
-✅ **Success Criteria**: Requested packages are present in the environment
-
----
-
-### Step 1C: Get Usage Instructions
+### Step 1C: Run the Script
 
 Ask Claude:
 
 ```
-How do I activate this environment and start using it in VSCode?
+How do I run this script in the new environment?
 ```
-*Note:* Choose your preferred IDE (VSCode, PyCharm, Jupyter, etc.)
 
 ### Expected Behavior
 
-Claude should provide clear instructions including:
-
-1. **Activation command** for the terminal:
+Claude should provide:
+1. **Activation command**:
    ```bash
-   conda activate ml-customer-analysis
+   conda activate image-analysis
    ```
 
-2. **VSCode setup steps**:
-   - Open Command Palette (Cmd/Ctrl+Shift+P)
-   - Search for "Python: Select Interpreter"
-   - Choose the `ml-customer-analysis` environment from the list
-   - Or manually enter the path: `/path/to/conda/envs/ml-customer-analysis/bin/python`
-   
-3. **Alternative IDEs** (if asked):
-   - **Jupyter**: `jupyter notebook` (after activating environment)
-   - **PyCharm**: File → Settings → Project → Python Interpreter → Add → Conda Environment
-   - **Terminal only**: Just activate and run `python` or your scripts
+2. **Run command**:
+   ```bash
+   python messy_scripts/image_analyzer.py
+   ```
+
+3. **Expected output description**:
+   - Creates test_image.png
+   - Analyzes dominant colors
+   - Saves analysis_result.png
 
 ### Verify in Terminal
 
 ```bash
 # Activate the environment
-conda activate ml-customer-analysis
+conda activate image-analysis
 
-# Test that packages work
-python -c "import pandas, numpy, sklearn, xgboost; print('Success! All packages imported.')"
-
-# You should see: Success! All packages imported.
+# Run the script
+python3 messy_scripts/image_analyzer.py
 ```
 
-✅ **Success Criteria**: Environment activates and packages import successfully in your chosen IDE or terminal
+**Expected output:**
+```
+Creating test image...
+Test image created: test_image.png
+Image size: (300, 200)
+  return fit_method(estimator, *args, **kwargs)
+Dominant colors (RGB):
+  Color 1: [  0   0 255]
+  Color 2: [255 255   0]
+  Color 3: [255   0   0]
+  Color 4: [  0 255   0]
+  Color 5: [  0   0 255]
+
+Analysis complete! Result saved to 'analysis_result.png'
+```
+
+**Visual confirmation:**
+- `test_image.png` created
+- `analysis_result.png` created with 3-panel visualization
+
+✅ **Success Criteria**: Script runs successfully and produces output files
+
+---
+
+### Step 1D: Try Another Messy Script (Optional)
+
+Want to see it again? Try the data pipeline script:
+
+```
+Now do the same for messy_scripts/data_pipeline.py
+```
+
+This script uses:
+- `xgboost`, `lightgbm` (ML libraries)
+- `sklearn`, `scipy` (data science)
+- `pandas`, `numpy` (data manipulation)
+- `seaborn`, `matplotlib` (visualization)
+
+Claude should create another clean environment and resolve all dependencies.
+
+---
+
+### What Just Happened?
+
+**Without Anaconda MCP:**
+1. Run script → ImportError
+2. Google "python cv2 install" → wrong package name
+3. Google "cv2 conda" → find opencv
+4. Install opencv
+5. Run again → ImportError on next package
+6. Repeat 8 more times
+
+**With Anaconda MCP:**
+1. Ask Claude to create environment
+2. Claude resolves all imports intelligently
+3. Run script
+
+**The intelligence shown:**
+- cv2 → opencv (conda name differs from import)
+- sklearn → scikit-learn (common naming mismatch)
+- PIL → pillow (historical package rename)
+- skimage → scikit-image (namespace vs package name)
 
 ---
 
@@ -184,7 +248,7 @@ conda env list
 Continue in Claude Desktop:
 
 ```
-What packages are installed in the ml-customer-analysis environment?
+What packages are installed in the image-analysis environment?
 ```
 
 ### Expected Behavior
@@ -192,17 +256,17 @@ What packages are installed in the ml-customer-analysis environment?
 Claude should:
 1. Call `conda_list_environments` or query specific environment details
 2. Show all installed packages with versions
-3. Highlight key packages (pandas, numpy, etc.)
+3. Highlight key packages (opencv, scikit-learn, pillow, etc.)
 4. Mention the total number of packages
 
 ### Verify in Terminal
 
 ```bash
 # Check package count
-conda list -n ml-customer-analysis | wc -l
+conda list -n image-analysis | wc -l
 
 # List all packages
-conda list -n ml-customer-analysis
+conda list -n image-analysis
 
 # Compare with what Claude reported
 ```
@@ -216,7 +280,7 @@ conda list -n ml-customer-analysis
 Ask Claude:
 
 ```
-"Can you compare the ml-customer-analysis with <NAME OF ANOTHER ONE OF YOUR ENVIRONMENTS>?"
+Can you compare the image-analysis environment with anaconda-mcp-demo?
 ```
 
 ### Expected Behavior
@@ -235,12 +299,12 @@ Claude should:
 
 **Goal**: Safely remove environments when no longer needed.
 
-### Step  3A: List Environments Before Cleanup
+### Step 3A: List Environments Before Cleanup
 
 In Claude Desktop:
 
 ```
-Show me all my conda environments. Help me get rid of the environments I don't use
+Show me all my conda environments. I want to clean up environments I don't need anymore.
 ```
 
 ### Expected Behavior
@@ -248,8 +312,8 @@ Show me all my conda environments. Help me get rid of the environments I don't u
 Claude should:
 1. List all environments
 2. Identify which ones look like demo/test environments
-3. Suggest next steps
-4. Successfully remove your selected environments
+3. Ask which ones you want to keep
+4. Provide guidance on safe deletion
 
 ### Verify in Terminal
 
@@ -258,19 +322,18 @@ Claude should:
 conda env list
 
 # Note which ones you want to keep
-# Rerun after Claude has removed environments to confirm they are no longer listed
 ```
 
-✅ **Success Criteria**: Claude provides a clear list for review and instructions
+✅ **Success Criteria**: Claude provides a clear list for review
 
 ---
 
-### Step 4B: Delete a Specific Environment
+### Step 3B: Delete a Specific Environment
 
 Continue in Claude Desktop:
 
 ```
-Delete the ml-customer-analysis environment. I'm done with that project.
+Delete the image-analysis environment. I'm done testing that script.
 ```
 
 ### Expected Behavior
@@ -286,27 +349,21 @@ Claude should:
 
 ```bash
 # Check that environment is gone
-conda env list | grep ml-customer-analysis
+conda env list | grep image-analysis
 # Should return nothing
 
 # Try to activate it (should fail)
-conda activate ml-customer-analysis
+conda activate image-analysis
 # Should show error: EnvironmentNotFound
 ```
 
 ✅ **Success Criteria**: Environment is completely removed
 
+**Note**: You can also delete the data-pipeline environment if you created it in Step 1D.
+
 ---
 
-## Advanced Scenarios
-
-Try these after completing the basic walkthrough:
-
-### Package Version Management
-
-```
-Install pandas version 1.5.3 specifically in a new environment called version-test.
-```
+## Additional Scenarios
 
 ### Environment Export
 
@@ -325,8 +382,8 @@ one for 3.11. Name them python-39-test, python-310-test, and python-311-test.
 ### Troubleshooting Assistance
 
 ```
-My environment isn't working correctly. Can you diagnose what might be wrong 
-with the ml-test environment?
+I'm getting import errors in my image-analysis environment. 
+Can you help me diagnose what might be wrong?
 ```
 
 ---
@@ -389,3 +446,79 @@ After completing these scenarios, try building on what you've learned:
 - Export environment specifications
 - Document environment setup steps
 - Share reproducible environments
+
+---
+
+## What's Next? Extension Ideas
+
+After completing these scenarios, try building on what you've learned:
+
+### 1. **Multi-Environment Workflows**
+- Create separate environments for different project phases
+- Switch between development, testing, and production environments
+- Share environment specifications with team members
+
+### 2. **Jupyter Integration**
+- Launch Jupyter from AI-managed environments
+- Create notebooks in specific environments
+- Manage kernel specifications
+
+### 3. **Package Discovery**
+- Search for packages before installing
+- Compare different package versions
+- Check package compatibility
+
+### 4. **Environment Templates**
+- Create reusable environment templates
+- Standard data science stack
+- Web development stack
+- Bioinformatics stack
+
+### 5. **CI/CD Integration**
+- Generate environment yamls for CI pipelines
+- Test across multiple Python versions
+- Automate environment validation
+
+### 6. **Team Collaboration**
+- Export environment specifications
+- Document environment setup steps
+- Share reproducible environments
+
+---
+
+## Congratulations! 🎉
+
+You've completed the Anaconda MCP demo and experienced:
+
+✅ **Intelligent import resolution** - Claude resolved cv2→opencv, sklearn→scikit-learn automatically  
+✅ **Environment management** - Created, inspected, and cleaned up environments through conversation  
+✅ **Time savings** - What took 20+ minutes of Stack Overflow searches took 30 seconds  
+✅ **Real-world workflow** - Ran actual code with messy dependencies
+
+### Key Takeaways
+
+**What you learned:**
+- How to use AI to resolve package dependencies intelligently
+- Natural language environment management through Claude Desktop
+- How MCP connects AI assistants to conda operations
+- The difference between import names and conda package names
+
+**Time saved per task:**
+- Script dependency resolution: 20+ minutes → 30 seconds
+- Environment creation: 5-10 minutes → 1 minute
+- Package inspection: 3-5 minutes → 30 seconds
+
+**Real-world impact:**
+This demo showed a daily frustration point for data scientists and developers. Every "messy script" scenario—code from GitHub, colleague's notebooks, AI-generated code—can now be handled instantly instead of requiring tribal knowledge about package naming conventions.
+
+---
+
+## Feedback
+
+What worked well? What was confusing? Let us know:
+- GitHub Issues: https://github.com/anaconda/anaconda-mcp/issues
+- Documentation: Suggest improvements to this walkthrough
+
+---
+
+**Happy environment managing! 🚀**
