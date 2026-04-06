@@ -2,7 +2,7 @@
 
 This guide walks you through four scenarios demonstrating Anaconda MCP's capabilities. Each scenario includes the prompt to send to Claude, expected behavior, and verification steps.
 
-**Prerequisites**: Complete `setup.sh` and restart Claude Desktop before beginning.
+**Prerequisites**: Run `./setup.sh` and restart Claude Desktop before beginning.
 
 ---
 
@@ -10,10 +10,10 @@ This guide walks you through four scenarios demonstrating Anaconda MCP's capabil
 
 1. [Scenario 1: The New Data Scientist](#scenario-1-the-new-data-scientist)
 2. [Scenario 2: The Package Explorer](#scenario-2-the-package-explorer)
-3. [Scenario 3: The Troubleshooter](#scenario-3-the-troubleshooter)
-4. [Scenario 4: The Cleanup Crew](#scenario-4-the-cleanup-crew)
-5. [Advanced Scenarios](#advanced-scenarios)
-6. [Tips for Success](#tips-for-success)
+3. [Scenario 3: The Cleanup Crew](#scenario-4-the-cleanup-crew)
+4. [Advanced Scenarios](#advanced-scenarios)
+5. [Common Issues](#common-issues)
+6. [Extension Ideas](#extension-ideas)
 
 ---
 
@@ -363,7 +363,7 @@ with the ml-test environment?
 
 ---
 
-## What's Next? Extension Ideas
+## Extension Ideas
 
 After completing these scenarios, try building on what you've learned:
 

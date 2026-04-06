@@ -6,7 +6,7 @@ Welcome to the Anaconda MCP demo! This interactive demonstration shows how Claud
 
 ## What This Demo Shows
 
-This demo demonstrates how AI assistants can help data scientists and developers:
+How AI assistants can help data scientists and developers:
 
 - **Create conda environments** for specific projects with natural language
 - **Install and manage packages** without remembering conda syntax
@@ -62,7 +62,7 @@ Before running this demo, you'll need:
 
 ### Note on Environment Files
 
-This demo includes two environment specifications:
+This demo includes:
 - **`demo-environment.yml`** - Creates the environment to *run* this demo (anaconda-mcp, environments-mcp-server)
 - **`sample_project/environment.yml`** - Creates an ML environment for the *sample project* (pandas, scikit-learn, jupyter)
 
@@ -70,7 +70,7 @@ The setup script (`./setup.sh`) handles the demo environment automatically. You 
 
 ---
 
-## Quick Start
+## Get Started
 
 ### Option 1: Automated Setup (Recommended)
 
@@ -82,7 +82,7 @@ cd ~/Documents/anaconda-mcp-demo
 This script will:
 1. Check all prerequisites
 2. Create a dedicated demo environment
-3. Configure Claude Desktop integration
+3. Configure Claude Desktop
 4. Provide next steps
 
 ### Option 2: Manual Setup
@@ -120,7 +120,7 @@ anaconda-mcp claude-desktop setup-config
 
 ### Step 2: Follow the Walkthrough
 
-Open `demo_walkthrough.md` and follow the scenarios step-by-step. Each scenario includes:
+Open [demo_walkthrough.md](demo_walkthrough.md) and follow the scenarios step-by-step. Each scenario includes:
 - **Natural language prompt** to send to Claude
 - **Expected behavior** from the AI
 - **Verification steps** to confirm in your terminal
@@ -132,23 +132,9 @@ After completing the walkthrough, try your own environment management tasks!
 
 ---
 
-## Demo Scenarios
-
-This demo includes three progressive scenarios that demonstrate Anaconda MCP capabilities:
-
-1. **The New Data Scientist** - Create and populate a complete ML environment
-2. **The Package Explorer** - List and inspect environments and packages
-4. **The Cleanup Crew** - Safely remove environments
-
-**Each scenario takes 3-5 minutes and includes terminal verification steps.**
-
-📖 **For complete step-by-step instructions, see [demo_walkthrough.md](demo_walkthrough.md)**
-
----
-
 ## Sample Project
 
-The `sample_project/` directory contains a realistic ML project with customer transaction data and a Jupyter notebook for analysis. Use this to explore creating environments from `environment.yml` files and launching Jupyter in managed environments.
+The `sample_project/` directory contains an ML project with customer transaction data and a Jupyter notebook for analysis. Use this to explore creating environments from `environment.yml` files in the scenario outlined in [demo_walkthrough.md](demo_walkthrough.md).
 
 ---
 
