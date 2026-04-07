@@ -39,7 +39,7 @@ For the best demo experience:
 
 **Goal**: Get the script running in a clean conda environment without manually resolving import → package mappings.
 
-**Why This Matters**: This is the most frustrating 20 minutes of every data scientist's day. Import errors, Stack Overflow searches, conda vs pip confusion, package name mismatches (cv2→opencv, sklearn→scikit-learn). This scenario shows how AI eliminates all of that.
+**Why This Matters**: This is the most frustrating 20 minutes of every data scientist's day. Import errors, googling, conda vs pip confusion, package name mismatches (cv2→opencv, sklearn→scikit-learn). This scenario shows how AI eliminates all of that.
 
 ---
 
@@ -407,16 +407,8 @@ Can you help me diagnose what might be wrong?
 ### Package installation times out
 
 **Solution**:
-1. Large packages like tensorflow can take 5+ minutes
-2. The MCP server has timeouts configured
-3. Consider installing large packages beforehand
-
-### Environments not found
-
-**Solution**:
-1. Check conda configuration: `conda config --show envs_dirs`
-2. Verify environments exist: `conda env list`
-3. Ensure you're using the right conda: `which conda`
+1. Large packages like tensorflow can take 5+ minutes (Claude Desktop has a 4 minute timeout)
+2. Consider installing large packages manually using instructions provided by Claude
 
 ---
 
@@ -424,76 +416,28 @@ Can you help me diagnose what might be wrong?
 
 After completing these scenarios, try building on what you've learned:
 
-### 1. **Multi-Environment Workflows**
-- Create separate environments for different project phases
-- Switch between development, testing, and production environments
-- Share environment specifications with team members
-
-### 2. **Package Discovery**
+### 1. **Package Discovery**
 - Search for packages before installing
 - Compare different package versions
 - Check package compatibility
 
-### 3. **Environment Templates**
-- Create reusable environment templates
-- Standard data science stack
-
-### 4. **CI/CD Integration**
-- Generate environment yamls for CI pipelines
-- Test across multiple Python versions
-
-### 6. **Team Collaboration**
-- Export environment specifications
-- Document environment setup steps
-- Share reproducible environments
-
----
-
-## What's Next? Extension Ideas
-
-After completing these scenarios, try building on what you've learned:
-
-### 1. **Multi-Environment Workflows**
-- Create separate environments for different project phases
-- Switch between development, testing, and production environments
-- Share environment specifications with team members
-
-### 2. **Jupyter Integration**
-- Launch Jupyter from AI-managed environments
-- Create notebooks in specific environments
-- Manage kernel specifications
-
-### 3. **Package Discovery**
-- Search for packages before installing
-- Compare different package versions
-- Check package compatibility
-
-### 4. **Environment Templates**
+### 2. **Environment Templates**
 - Create reusable environment templates
 - Standard data science stack
 - Web development stack
 - Bioinformatics stack
 
-### 5. **CI/CD Integration**
+### 3. **CI/CD Integration**
 - Generate environment yamls for CI pipelines
 - Test across multiple Python versions
 - Automate environment validation
 
-### 6. **Team Collaboration**
+### 4. **Team Collaboration**
 - Export environment specifications
 - Document environment setup steps
 - Share reproducible environments
 
 ---
-
-## Congratulations! 🎉
-
-You've completed the Anaconda MCP demo and experienced:
-
-✅ **Intelligent import resolution** - Claude resolved cv2→opencv, sklearn→scikit-learn automatically  
-✅ **Environment management** - Created, inspected, and cleaned up environments through conversation  
-✅ **Time savings** - What took 20+ minutes of Stack Overflow searches took 30 seconds  
-✅ **Real-world workflow** - Ran actual code with messy dependencies
 
 ### Key Takeaways
 
@@ -503,11 +447,6 @@ You've completed the Anaconda MCP demo and experienced:
 - How MCP connects AI assistants to conda operations
 - The difference between import names and conda package names
 
-**Time saved per task:**
-- Script dependency resolution: 20+ minutes → 30 seconds
-- Environment creation: 5-10 minutes → 1 minute
-- Package inspection: 3-5 minutes → 30 seconds
-
 **Real-world impact:**
 This demo showed a daily frustration point for data scientists and developers. Every "messy script" scenario—code from GitHub, colleague's notebooks, AI-generated code—can now be handled instantly instead of requiring tribal knowledge about package naming conventions.
 
@@ -515,10 +454,6 @@ This demo showed a daily frustration point for data scientists and developers. E
 
 ## Feedback
 
-What worked well? What was confusing? Let us know:
-- GitHub Issues: https://github.com/anaconda/anaconda-mcp/issues
-- Documentation: Suggest improvements to this walkthrough
+What worked well? What was confusing? Let us know: [https://github.com/anaconda/anaconda-mcp/issues](https://github.com/anaconda/anaconda-mcp/issues)
 
 ---
-
-**Happy environment managing! 🚀**
