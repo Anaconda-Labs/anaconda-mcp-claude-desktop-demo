@@ -22,6 +22,10 @@ __pycache__/
 *.pyc
 *.pyo
 
+# MacOS specific files
+.DS_Store
+
+
 # Exclude Jupyter checkpoints
 .ipynb_checkpoints/
 

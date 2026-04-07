@@ -126,6 +126,8 @@ anaconda-mcp claude-desktop setup-config
 # (Quit and reopen the application)
 ```
 
+> **💡 Note:** The `anaconda-mcp claude-desktop` command provides built-in configuration management. See [CLAUDE_DESKTOP.md](https://github.com/anaconda/anaconda-mcp/blob/main/docs/CLAUDE_DESKTOP.md) for all available commands (`setup-config`, `remove-config`, `show`, `path`). The setup script uses this internally but adds demo-specific configuration like filesystem access.
+
 ---
 
 ## Running the Demo
@@ -257,6 +259,8 @@ anaconda-mcp claude-desktop setup-config --force
 # 4. Fully restart Claude Desktop (quit and reopen)
 ```
 
+> **💡 Tip:** Use `anaconda-mcp claude-desktop path` to find your config file location, and `anaconda-mcp claude-desktop show --json` for machine-readable output.
+
 ### Port collision errors
 
 If you see `Address already in use` errors in Claude Desktop logs:
@@ -281,16 +285,6 @@ Verify Claude Desktop can start the servers
 - Check Settings > Developer > Local MCP Servers (should show anaconda-mcp running)   
 
 **Note:** Claude Desktop connects to anaconda-mcp via STDIO (no network port needed). The anaconda-mcp gateway then starts environments-mcp-server on port 4041. You should only see port 4041 in use when everything is working correctly.
-
-### Authentication issues
-
-```bash
-# Check if you're logged in
-anaconda auth whoami
-
-# Login if needed (optional - auth is disabled by default)
-anaconda auth login
-```
 
 ### Environments not found
 
