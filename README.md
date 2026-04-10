@@ -324,7 +324,7 @@ anaconda-mcp -v serve
 ## Feedback
 
 Found an issue or have a suggestion? Please report it at:
-https://github.com/anaconda/anaconda-mcp/issues
+[https://github.com/Anaconda-Labs/anaconda-mcp-claude-desktop-demo/issues](https://github.com/Anaconda-Labs/anaconda-mcp-claude-desktop-demo/issues)
 
 ---
 
