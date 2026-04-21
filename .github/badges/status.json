@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
   "label": "status",
-  "message": "needs review",
-  "color": "orange"
+  "message": "Active",
+  "color": "brightgreen"
 }
