@@ -13,6 +13,9 @@ jobs:
     name: Record successful test
     runs-on: ubuntu-latest
     if: ${{ inputs.tested == true }}
+    env:
+      REGISTRY_OWNER: ${{ vars.REGISTRY_OWNER || 'dbouquin' }}
+      REGISTRY_REPO: ${{ vars.REGISTRY_REPO || 'resource-registry' }}
 
     steps:
       - name: Checkout repository
@@ -23,6 +26,8 @@ jobs:
           REGISTRY_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
           REPO_NAME: ${{ github.event.repository.name }}
           ORG_NAME: ${{ github.event.repository.owner.login }}
+          REGISTRY_OWNER: ${{ vars.REGISTRY_OWNER || 'dbouquin' }}
+          REGISTRY_REPO: ${{ vars.REGISTRY_REPO || 'resource-registry' }}
         run: |
           python - << 'EOF'
           import requests, os, yaml, base64, json
@@ -33,10 +38,9 @@ jobs:
           org_name = os.environ['ORG_NAME']
           today = datetime.today().strftime('%Y-%m-%d')
 
-          # Determine registry repo location
-          # Update this to match where your resource-registry lives
-          REGISTRY_OWNER = 'dbouquin'      # Change to Anaconda-Labs for production
-          REGISTRY_REPO = 'resource-registry'
+          # Determine registry repo location from environment variables
+          REGISTRY_OWNER = os.environ['REGISTRY_OWNER']
+          REGISTRY_REPO = os.environ['REGISTRY_REPO']
 
           headers = {
               'Authorization': f'token {token}',

@@ -5,7 +5,8 @@ on:
     branches: [main]
     paths:
       - 'README.md'
-      - 'environment.yml'
+      - '*environment.yml'
+      - '**/*environment.yml'
       - 'pixi.toml'
       - 'LICENSE'
   pull_request:
@@ -16,3 +17,4 @@ jobs:
     uses: dbouquin/criteria_checker/.github/workflows/quality-check-callable.yml@main
     with:
       resource_type: show   # Change to 'guide' or 'tell' as appropriate
+      criteria_checker_owner: dbouquin   # Change to 'Anaconda-Labs' for production
