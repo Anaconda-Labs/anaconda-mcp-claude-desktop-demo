@@ -1,6 +1,6 @@
 # Anaconda MCP Demo using Claude Desktop 
 
-[![Status](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Anaconda-Labs/anaconda-mcp-claude-desktop-demo/main/.github/badges/status.json&cacheSeconds=300)](https://github.com/Anaconda-Labs/anaconda-mcp-claude-desktop-demo)
+[![Status](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Anaconda-Labs/anaconda-mcp-claude-desktop-demo/main/.github/badges/status.json?1776800622&cacheSeconds=300)](https://github.com/Anaconda-Labs/anaconda-mcp-claude-desktop-demo)
 
 Welcome to the Anaconda MCP demo! This interactive demonstration shows how Claude Desktop can manage conda environments through natural language using the Model Context Protocol (MCP).
 
