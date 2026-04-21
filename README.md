@@ -7,6 +7,17 @@ Welcome to the Anaconda MCP demo! This interactive demonstration shows how Claud
 
 ---
 
+## Resource Metadata
+
+- **Owner**: @dbouquin
+- **Last tested**: 2026-04-01
+- **Status**: active
+- **Resource type**: show
+- **Time savings**: Reduces environment setup time from 15-30 minutes to 3-5 minutes
+- **Target audience**: Data scientists and developers working with conda environments
+
+---
+
 ## File Guide
 
 ```
