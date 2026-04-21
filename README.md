@@ -1,4 +1,4 @@
-# Anaconda MCP Demo using Claude Desktop
+# Anaconda MCP Demo using Claude Desktop 
 
 [![Status](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Anaconda-Labs/anaconda-mcp-claude-desktop-demo/main/.github/badges/status.json)](https://github.com/Anaconda-Labs/anaconda-mcp-claude-desktop-demo/commits/main)
 [![Last Commit](https://img.shields.io/github/last-commit/Anaconda-Labs/anaconda-mcp-claude-desktop-demo)](https://github.com/Anaconda-Labs/anaconda-mcp-claude-desktop-demo/commits/main)
