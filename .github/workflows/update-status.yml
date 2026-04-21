@@ -15,6 +15,9 @@ jobs:
     if: ${{ inputs.tested == true }}
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Update last_tested date in registry
         env:
           REGISTRY_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
