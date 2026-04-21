@@ -80,16 +80,22 @@ jobs:
           print(f"Registry updated successfully.")
           EOF
 
-      - name: Update local status badge
+      - name: Update local status badge and README
         run: |
+          # Update badge JSON
           mkdir -p .github/badges
           echo '{"schemaVersion":1,"label":"status","message":"active","color":"brightgreen"}' \
             > .github/badges/status.json
 
-      - name: Commit badge update
+          # Update README with cache-busting timestamp
+          TIMESTAMP=$(date +%s)
+          sed -i.bak "s|status\.json?[0-9]*&cacheSeconds|status.json?${TIMESTAMP}\&cacheSeconds|g" README.md
+          rm README.md.bak
+
+      - name: Commit badge and README update
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add .github/badges/status.json
-          git diff --staged --quiet || git commit -m "chore: update status badge after owner certification"
+          git add .github/badges/status.json README.md
+          git diff --staged --quiet || git commit -m "chore: update status badge to active [skip ci]"
           git push
