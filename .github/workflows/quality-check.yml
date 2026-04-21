@@ -1,0 +1,18 @@
+name: Quality Check
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'README.md'
+      - 'environment.yml'
+      - 'pixi.toml'
+      - 'LICENSE'
+  pull_request:
+    branches: [main]
+
+jobs:
+  quality-check:
+    uses: dbouquin/criteria_checker/.github/workflows/quality-check-callable.yml@main
+    with:
+      resource_type: show   # Change to 'guide' or 'tell' as appropriate
