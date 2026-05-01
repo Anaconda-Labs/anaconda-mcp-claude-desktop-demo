@@ -161,13 +161,13 @@ print_success "Environment activated"
 
 # Install anaconda-mcp from conda
 print_status "Installing anaconda-mcp from conda..."
-conda install -c anaconda anaconda-mcp -y
+conda install -c anaconda anaconda-mcp=1.0.3 -y
 print_success "anaconda-mcp installed"
 
 # Install environments-mcp-server (required for conda tools)
-print_status "Installing environments-mcp-server from conda..."
-conda install -c anaconda environments-mcp-server -y
-print_success "environments-mcp-server installed"
+#print_status "Installing environments-mcp-server from conda..."
+#conda install -c anaconda environments-mcp-server=1.0.3 -y
+#print_success "environments-mcp-server installed"
 
 # Verify installation
 print_status "Verifying installation..."
@@ -180,11 +180,11 @@ else
 fi
 
 # Verify environments-mcp-server
-if python -m environments_mcp_server --help >/dev/null 2>&1; then
-    print_success "environments-mcp-server is installed and working"
-else
-    print_warning "environments-mcp-server may not be installed correctly"
-fi
+#if python -m environments_mcp_server --help >/dev/null 2>&1; then
+#    print_success "environments-mcp-server is installed and working"
+#else
+#    print_warning "environments-mcp-server may not be installed correctly"
+#fi
 
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -201,13 +201,15 @@ if [ "$CLAUDE_FOUND" = true ]; then
         read -p "Reconfigure? (y/N) " -n 1 -r
         echo
         if [[ $REPLY =~ ^[Yy]$ ]]; then
-            anaconda-mcp claude-desktop setup-config --force
+            #anaconda-mcp claude-desktop setup-config --force
+            anaconda mcp setup --client claude-desktop --force
             print_success "Claude Desktop reconfigured"
         else
             print_status "Keeping existing configuration"
         fi
     else
-        anaconda-mcp claude-desktop setup-config
+        #anaconda-mcp claude-desktop setup-config
+        anaconda mcp setup --client claude-desktop
         print_success "Claude Desktop configured"
     fi
 
